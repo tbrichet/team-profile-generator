@@ -71,9 +71,50 @@ function promptUser () {
             }
         ])
         .then(managerData => {
-            console.log(managerData);
+            const manager = new Manager(managerData.ManagerName, managerData.managerId, managerData.managerEmail, managerData.managerOfficeNumber);
+            
+            // Push to Employee Array
+            employeeArray.push(manager);
+
+            // Push to ID Array
+            idArray.push(managerData.managerId);
+
+            // Call function to create rest of team
+            teamMembers();
+
         });
     }
+    function teamMembers() {
+        inquirer.prompt([
+            {
+                type: "list",
+                name: "teamType",
+                message: "Please select the type of team member you would like to add:",
+                choices: [
+                    "Engineer",
+                    "Intern",
+                    "Team is Complete"
+                ]
+            }
+        ])
+        .then (teamData => {
+            if (teamData.teamType = "Engineer") {
+                //createEngineer();
+                console.log("Engineer Created");
+    
+            } else if (teamData.teamType = "Intern") {
+                //createIntern();
+                console.log("Intern Created");
+            } else {
+                //teamComplete();
+                console.log("Team Complete");
+            }
+        });
+    };
+
+
+
+
     managerInput();
 }
 
