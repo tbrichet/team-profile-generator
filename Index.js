@@ -79,11 +79,12 @@ function promptUser () {
             // Push to ID Array
             idArray.push(managerData.managerId);
 
-            // Call function to create rest of team
+            // Call Function to Create Rest of the Team
             teamMembers();
 
         });
     }
+    // Function to Create Team (after Manager Data Inputted)
     function teamMembers() {
         inquirer.prompt([
             {
@@ -98,24 +99,166 @@ function promptUser () {
             }
         ])
         .then (teamData => {
-            if (teamData.teamType = "Engineer") {
-                //createEngineer();
-                console.log("Engineer Created");
+            if (teamData.teamType === "Engineer") {
+                //console.log("Engineer Created");
+                createEngineer();
     
-            } else if (teamData.teamType = "Intern") {
-                //createIntern();
-                console.log("Intern Created");
+            } else if (teamData.teamType === "Intern") {
+                //console.log("Intern Created");
+                createIntern();
+
             } else {
-                //teamComplete();
-                console.log("Team Complete");
+                //console.log("Team Complete");
+                teamComplete();
             }
         });
     };
 
+    function createEngineer () {
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "engineerName",
+                message: "Please enter the name of the engineer:",
+                validate: engineerNameInput => {
+                    if (engineerNameInput) {
+                        return true;
+                    } else {
+                        console.log("Engineer name cannot be blank.");
+                        return false;
+                    }
+                }
+            },
+            {
+                type: "input",
+                name: "engineerId",
+                message: "Please enter the engineer's ID:",
+                validate: engineerIdInput => {
+                    if(engineerIdInput) {
+                        return true;
+                    } else {
+                        console.log("Enginner ID cannot be blank");
+                        return false;
+                    }
+                }
+            },
+            {
+                type: "input",
+                name: "engineerEmail",
+                message: "Please enter the engineer's email address:",
+                validate: engineerEmailInput => {
+                    if(engineerEmailInput) {
+                        return true;
+                    } else {
+                        console.log("Engineer email cannot be blank.");
+                        return false;
+                    }
+                }
+            },
+            {
+                type: "input",
+                name: "engineerGithub",
+                message: "Please enter the engineer's Github username",
+                validate: engineerGithubInput => {
+                    if(engineerGithubInput) {
+                        return true;
+                    } else {
+                        console.log("Username cannot be blank.");
+                        return false;
+                    }
+                }
+            },
+        ])
+        .then(engineerData => {
+            const engineer = new Engineer(engineerData.engineerName, engineerData.engineerId, engineerData.engineerEmail, engineerData.engineerGithub);
 
+            // Push to Employee Array
+            employeeArray.push(engineer);
 
+            // Push to ID Array
+            idArray.push(engineerData.engineerId);
 
+            // Call Function for Additional Team Members
+            teamMembers();
+        });
+    };
+
+    function createIntern () {
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "internName",
+                message: "Please enter the intern's name:",
+                validate: internNameInput => {
+                    if(internNameInput) {
+                        return true;
+                    } else {
+                        console.log("Intern name cannot be blank.");
+                        return false;
+                    }
+                }
+            },
+            {
+                type: "input",
+                name: "internId",
+                message: "Please enter the intern's ID number:",
+                validate: internIdInput => {
+                    if(internIdInput) {
+                        return true;
+                    } else {
+                        console.log("Intern ID cannot be blank.");
+                        return false;
+                    }
+                }
+            },
+            {
+                type: "input",
+                name: "internEmail",
+                message: "Please enter the intern's email address:",
+                validate: internEmailInput => {
+                    if(internEmailInput) {
+                        return true;
+                    } else {
+                        console.log("Intern email cannot be blank.");
+                        return false;
+                    }
+                }
+            },
+            {
+                type: "input",
+                name: "internSchool",
+                message: "Please enter the intern's school name:",
+                validate: internSchoolInput => {
+                    if(internSchoolInput) {
+                        return true;
+                    } else {
+                        console.log("School name cannot be blank.");
+                        return false;
+                    }
+                }
+            }
+        ])
+        .then(internData => {
+            const intern = new Intern(internData.internName, internData.internId, internData.internEmail, internData.internSchool);
+            
+            // Push to Employee Array
+            employeeArray.push(intern);
+
+            // Push to ID Array
+            idArray.push(internData.internId);
+
+            // Call Function for Additional Team Members
+            teamMembers();
+        })
+    };
+
+    function teamComplete() {
+        console.log("Your team is complete.");
+    }
+
+    // Begin Questions with Manager Input
     managerInput();
 }
 
+// Begin Prompts in Terminal Upon Program Load
 promptUser();
