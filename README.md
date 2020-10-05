@@ -26,7 +26,7 @@ This application allows the user to input basic information about their workforc
 
 ## Links
 GitHub Repository | https://github.com/tbrichet/team-profile-generator <br>
-Screencastify Demo |
+Screencastify Demo | https://drive.google.com/file/d/1ct_0qah5yJceZ8k5wtK21R1ZeYvBYz2e/view
 
 ## Contributions
 * File System <br>

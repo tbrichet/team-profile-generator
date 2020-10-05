@@ -1,18 +1,7 @@
 const fs = require('fs');
 
 const createPage = employeeArray => {
-    console.log(employeeArray)
-    
-    // // Determine Employee Type
-    // let specialData;
-
-    // if (employeeArray.title ==="Manager") {
-    //     specialData = `Office Number: ${employeeArray.officeNumber}`
-    // } else if (employeeArray.title === "Engineer") {
-    //     specialData = `GitHub: ${employeeArray.github}`
-    // } else if (employeeArray.title === "Intern") {
-    //     specialData = `School: ${employeeArray.school}`
-    // }
+    console.log(employeeArray);
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +27,7 @@ const createPage = employeeArray => {
 
         <div class="container" style="padding:20px">
         <div class="row" style="align-items:center">
-    `;
+    `
 }
 
 module.exports = createPage;
