@@ -2,14 +2,20 @@
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
 const Manager = require("./lib/Manager.js");
-const createPage = require("./src/template.html");
+const createPage = require("./src/createPage.js");
 
 const fs = require("fs");
 const inquirer = require("inquirer");
 
 // Set up Arrays
 const employeeArray = [];
-const idArray = [];
+
+//Function to Write HTML File
+const writeToFile = (fileName, data) => {
+    fs.writeFile(fileName, data, err => {
+        if (err) throw new Error(err);
+    });
+};
 
 // Overall Function for User Prompts
 function promptUser () {
@@ -74,13 +80,10 @@ function promptUser () {
 
             console.log("Team member created!");
 
-            const manager = new Manager(managerData.ManagerName, managerData.managerId, managerData.managerEmail, managerData.managerOfficeNumber);
+            const manager = new Manager(managerData.managerName, managerData.managerId, managerData.managerEmail, managerData.managerOfficeNumber);
             
             // Push to Employee Array
             employeeArray.push(manager);
-
-            // Push to ID Array
-            idArray.push(managerData.managerId);
 
             // Call Function to Create Rest of the Team
             teamMembers();
@@ -181,9 +184,6 @@ function promptUser () {
             // Push to Employee Array
             employeeArray.push(engineer);
 
-            // Push to ID Array
-            idArray.push(engineerData.engineerId);
-
             // Call Function for Additional Team Members
             teamMembers();
         });
@@ -253,16 +253,14 @@ function promptUser () {
             // Push to Employee Array
             employeeArray.push(intern);
 
-            // Push to ID Array
-            idArray.push(internData.internId);
-
             // Call Function for Additional Team Members
             teamMembers();
         })
     };
 
     function teamComplete() {
-        console.log("Team Complete. Please open index.html to view your team webpage.");
+        console.log("Team created! Open index.html to view your file.");
+        writeToFile('./dist/index.html', createPage(employeeArray));
     }
 
     // Begin Questions with Manager Input
