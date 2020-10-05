@@ -71,6 +71,9 @@ function promptUser () {
             }
         ])
         .then(managerData => {
+
+            console.log("Team member created!");
+
             const manager = new Manager(managerData.ManagerName, managerData.managerId, managerData.managerEmail, managerData.managerOfficeNumber);
             
             // Push to Employee Array
@@ -170,6 +173,9 @@ function promptUser () {
             },
         ])
         .then(engineerData => {
+            
+            console.log("Team member created!");
+
             const engineer = new Engineer(engineerData.engineerName, engineerData.engineerId, engineerData.engineerEmail, engineerData.engineerGithub);
 
             // Push to Employee Array
@@ -239,6 +245,9 @@ function promptUser () {
             }
         ])
         .then(internData => {
+
+            console.log("Team member created!");
+
             const intern = new Intern(internData.internName, internData.internId, internData.internEmail, internData.internSchool);
             
             // Push to Employee Array
@@ -253,7 +262,7 @@ function promptUser () {
     };
 
     function teamComplete() {
-        console.log("Your team is complete.");
+        console.log("Team Complete. Please open index.html to view your team webpage.");
     }
 
     // Begin Questions with Manager Input
