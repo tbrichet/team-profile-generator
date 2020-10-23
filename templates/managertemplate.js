@@ -1,6 +1,6 @@
 // Manager Card Template
 const createManagerCard = employeeData => {
-    return (`
+    `
         <div class="card mb-3 col-3.5" style="margin:5px; width:auto">
             <div class="card-header" style="background-color:gold">
                 <h3><b>${employeeData.name}</b></h3>
@@ -13,7 +13,7 @@ const createManagerCard = employeeData => {
                     <li class="list-group-item">Office Number: 1</li>
                 </ul>
             </div>
-        </div>`)
+        </div>`
 };
 
 module.exports = createManagerCard;

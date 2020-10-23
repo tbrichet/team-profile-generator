@@ -1,6 +1,6 @@
 // Engineer Card Template
 const createEngineerCard = employeeData => {
-    return (`
+    `
         <div class="card col-3.5 mb-3"style="margin:5px; width:auto">
             <div class="card-header" style="background-color:gold">
                 <h3><b>${employeeData.name}</b></h3>
@@ -13,7 +13,8 @@ const createEngineerCard = employeeData => {
                     <li class="list-group-item">Github: <a href="https://github.com/${employeeData.github}" target="_blank">${employeeData.github}</a></li>
                 </ul>
             </div>
-        </div>`)
+        </div>`
 };
 
 module.exports = createEngineerCard;
+

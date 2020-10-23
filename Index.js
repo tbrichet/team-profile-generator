@@ -260,7 +260,7 @@ function promptUser () {
 
     function teamComplete() {
         console.log("Team created! Open index.html to view your file.");
-        writeToFile('./dist/index.html', createPage(employeeArray));
+        fs.writeFileSync('./dist/index.html', createPage(employeeArray));
     }
 
     // Begin Questions with Manager Input

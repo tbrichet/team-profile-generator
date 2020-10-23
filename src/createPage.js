@@ -12,22 +12,26 @@ const createPage = employeeArray => {
     // console.log(Object.keys(employeeArray[1]));
     // console.log(Object.keys(employeeArray[2]));
     const employeeCard = employeeData => {
+        return (
         employeeData.forEach(employee => {
             if(Object.keys(employee)[3] === "officeNumber") {
                 console.log("This is a manager.");
                 return createManagerCard(employee);
+                //console.log(createManagerCard(employee));
+                //console.log(typeof createManagerCard(employee));
 
             } else if (Object.keys(employee)[3] === "github") {
                 console.log("This is an engineer.");
                 return createEngineerCard(employee);
+                //console.log(createEngineerCard(employee));
 
             } else {
                 console.log("This is an intern.");
                 return createInternCard(employee);
+                //console.log(createInternCard(employee));
             }
-        });  
+        })); 
     }
-    //employeeCard(employeeArray);
 
     return `
     <!DOCTYPE html>
